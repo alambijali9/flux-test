@@ -1,0 +1,9 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: github-arc-system
+resources:
+- namespace.yaml
+- rbac.yaml
+- helmsync.yaml
+- helmrelease.yaml
+- secrets.yaml
