@@ -19,6 +19,12 @@ spec:
       controllerManagerAddr: ":8080"
       listenerAddr: ":8080"
       listenerEndpoint: "/metrics"
+    podSecurityContext:
+      runAsNonRoot: true
+      runAsUser: 5000
+      runAsGroup: 5000
+      fsGroup: 5000
+        
   upgrade:
     remediation:
       remediateLastFailure: true
