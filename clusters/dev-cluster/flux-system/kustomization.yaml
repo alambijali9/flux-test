@@ -6,16 +6,17 @@ resources:
 patches:
 - patch: |
     apiVersion: apps/v1
-      kind: Deployment
+    kind: Deployment
+    metadata:
       name: all
-      spec:
-        template:
-          spec:
-            securityContext:
-              runAsNonRoot: true
-              runAsUser: 5000
-              runAsGroup: 5000
-              fsGroup: 5000
+    spec:
+      template:
+        spec:
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 5000
+            runAsGroup: 5000
+            fsGroup: 5000
   target:
     kind: Deployment
     name: source-controller
