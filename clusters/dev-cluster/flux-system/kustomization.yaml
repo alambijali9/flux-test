@@ -19,6 +19,5 @@ patches:
             fsGroup: 5000
   target:
     kind: Deployment
-    name: source-controller
-    # name: "(source-controller|kustomize-controller|helm-controller|notification-controller)"
+    name: "(source-controller|kustomize-controller|helm-controller|notification-controller)"
 
