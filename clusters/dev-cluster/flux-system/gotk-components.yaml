@@ -4541,9 +4541,9 @@ spec:
         kubernetes.io/os: linux
       priorityClassName: system-cluster-critical
       securityContext:
-        runAsNonRoot: true
-        runAsUser: 3000
-        runAsGroup: 3000   
+        # runAsNonRoot: true
+        # runAsUser: 3000
+        # runAsGroup: 3000   
         fsGroup: 3000
       serviceAccountName: source-controller
       terminationGracePeriodSeconds: 10
@@ -6022,9 +6022,9 @@ spec:
         kubernetes.io/os: linux
       priorityClassName: system-cluster-critical
       securityContext:
-        runAsNonRoot: true
-        runAsUser: 3000
-        runAsGroup: 3000   
+        # runAsNonRoot: true
+        # runAsUser: 3000
+        # runAsGroup: 3000   
         fsGroup: 3000
 
       serviceAccountName: kustomize-controller
@@ -8763,9 +8763,9 @@ spec:
         kubernetes.io/os: linux
       priorityClassName: system-cluster-critical
       securityContext:
-        runAsNonRoot: true
-        runAsUser: 3000
-        runAsGroup: 3000   
+        # runAsNonRoot: true
+        # runAsUser: 3000
+        # runAsGroup: 3000   
         fsGroup: 3000
       serviceAccountName: helm-controller
       terminationGracePeriodSeconds: 600
@@ -10197,9 +10197,9 @@ spec:
       nodeSelector:
         kubernetes.io/os: linux
       securityContext:
-        runAsNonRoot: true
-        runAsUser: 3000
-        runAsGroup: 3000   
+        # runAsNonRoot: true
+        # runAsUser: 3000
+        # runAsGroup: 3000   
         fsGroup: 3000
       serviceAccountName: notification-controller
       terminationGracePeriodSeconds: 10
