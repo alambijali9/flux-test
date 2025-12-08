@@ -57,3 +57,8 @@ spec:
         labelSelector:
           matchLabels:
             app.kubernetes.io/instance: ingress-nginx
+      podSecurityContext:
+        runAsNonRoot: true
+        runAsUser: 5000    
+        runAsGroup: 5000
+        fsGroup: 5000  
