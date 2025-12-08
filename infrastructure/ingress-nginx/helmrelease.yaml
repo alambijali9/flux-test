@@ -61,4 +61,12 @@ spec:
         runAsNonRoot: true
         runAsUser: 5000    
         runAsGroup: 5000
-        fsGroup: 5000  
+        fsGroup: 5000
+      # containerSecurityContext:
+      #   runAsNonRoot: true
+      #   runAsUser: 5000
+      #   runAsGroup: 5000
+      #   allowPrivilegeEscalation: false
+      #   seccompProfile:
+      #     type: RuntimeDefault
+      #   readOnlyRootFilesystem: false  
