@@ -1,43 +1,95 @@
-apiVersion: kustomize.toolkit.fluxcd.io/v1
-kind: Kustomization
-metadata:
-  name: cert-manager
-  namespace: flux-system
-spec:
-  serviceAccountName: kustomize-controller
-  interval: 30s
-  sourceRef:
-    kind: GitRepository
-    name: flux-system
-  path: ./infrastructure/cert-manager
-  prune: true
-  wait: true
-  timeout: 5m
+# apiVersion: kustomize.toolkit.fluxcd.io/v1
+# kind: Kustomization
+# metadata:
+#   name: cert-manager
+#   namespace: flux-system
+# spec:
+#   serviceAccountName: kustomize-controller
+#   interval: 30s
+#   sourceRef:
+#     kind: GitRepository
+#     name: flux-system
+#   path: ./infrastructure/cert-manager
+#   prune: true
+#   wait: true
+#   timeout: 5m
 
----
+# ---
 
-apiVersion: kustomize.toolkit.fluxcd.io/v1
-kind: Kustomization
-metadata:
-  name: reloader
-  namespace: flux-system
-spec:
-  serviceAccountName: kustomize-controller
-  interval: 30s
-  sourceRef:
-    kind: GitRepository
-    name: flux-system
-  path: ./infrastructure/reloader
-  prune: true
-  wait: true
-  timeout: 5m
+# apiVersion: kustomize.toolkit.fluxcd.io/v1
+# kind: Kustomization
+# metadata:
+#   name: reloader
+#   namespace: flux-system
+# spec:
+#   serviceAccountName: kustomize-controller
+#   interval: 30s
+#   sourceRef:
+#     kind: GitRepository
+#     name: flux-system
+#   path: ./infrastructure/reloader
+#   prune: true
+#   wait: true
+#   timeout: 5m
   
+# ---
+
+# apiVersion: kustomize.toolkit.fluxcd.io/v1
+# kind: Kustomization
+# metadata:
+#   name: redis
+#   namespace: flux-system
+# spec:
+#   serviceAccountName: kustomize-controller
+#   interval: 30s
+#   sourceRef:
+#     kind: GitRepository
+#     name: flux-system
+#   path: ./infrastructure/redis
+#   prune: true
+#   wait: true
+#   timeout: 5m
+
+# ---
+
+# apiVersion: kustomize.toolkit.fluxcd.io/v1
+# kind: Kustomization
+# metadata:
+#   name: github-arc-system
+#   namespace: flux-system
+# spec:
+#   serviceAccountName: kustomize-controller
+#   interval: 30s
+#   sourceRef:
+#     kind: GitRepository
+#     name: flux-system
+#   path: ./infrastructure/github-arc-system
+#   prune: true
+#   wait: true
+#   timeout: 5m
+
+# ---  
+# apiVersion: kustomize.toolkit.fluxcd.io/v1
+# kind: Kustomization
+# metadata:
+#   name: ingress-nginx
+#   namespace: flux-system
+# spec:
+#   serviceAccountName: kustomize-controller
+#   interval: 30s
+#   sourceRef:
+#     kind: GitRepository
+#     name: flux-system
+#   path: ./infrastructure/ingress-nginx
+#   prune: true
+#   wait: true
+#   timeout: 5m
+
 ---
-
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: redis
+  name: cloudflared
   namespace: flux-system
 spec:
   serviceAccountName: kustomize-controller
@@ -45,43 +97,8 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
-  path: ./infrastructure/redis
+  path: ./infrastructure/cloudflared
   prune: true
   wait: true
   timeout: 5m
-
----
-
-apiVersion: kustomize.toolkit.fluxcd.io/v1
-kind: Kustomization
-metadata:
-  name: github-arc-system
-  namespace: flux-system
-spec:
-  serviceAccountName: kustomize-controller
-  interval: 30s
-  sourceRef:
-    kind: GitRepository
-    name: flux-system
-  path: ./infrastructure/github-arc-system
-  prune: true
-  wait: true
-  timeout: 5m
-
----  
-apiVersion: kustomize.toolkit.fluxcd.io/v1
-kind: Kustomization
-metadata:
-  name: ingress-nginx
-  namespace: flux-system
-spec:
-  serviceAccountName: kustomize-controller
-  interval: 30s
-  sourceRef:
-    kind: GitRepository
-    name: flux-system
-  path: ./infrastructure/ingress-nginx
-  prune: true
-  wait: true
-  timeout: 5m
-  
+    
