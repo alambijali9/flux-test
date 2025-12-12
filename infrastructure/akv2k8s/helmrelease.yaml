@@ -1,0 +1,26 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: akv2k8s
+  namespace: akv2k8s
+spec:
+  interval: 30m0s
+  serviceAccountName: akv2k8s-reconciler
+  chart:
+    spec:
+      chart: akv2k8s
+      version: "2.3.5" # hold of on 2.5+ until this is fixed: https://github.com/SparebankenVest/azure-key-vault-to-kubernetes/issues/591
+      sourceRef:
+        kind: HelmRepository
+        name: sparebankenvest-helm-charts
+        namespace: akv2k8s
+  upgrade:
+    remediation:
+      remediateLastFailure: true
+  values:
+    addAzurePodIdentityException: true
+    global:
+      metrics:
+        enabled: true
+    env_injector:
+      enabled: false
