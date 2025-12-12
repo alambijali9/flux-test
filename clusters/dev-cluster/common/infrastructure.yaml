@@ -115,7 +115,7 @@ spec:
     kind: GitRepository
     name: flux-system
   path: ./infrastructure/akv2k8s/crds
-  prune: true
+  prune: false
   wait: true
   timeout: 5m
 
