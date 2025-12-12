@@ -18,7 +18,7 @@ spec:
     remediation:
       remediateLastFailure: true
   values:
-    addAzurePodIdentityException: true
+    addAzurePodIdentityException: false
     global:
       metrics:
         enabled: true
