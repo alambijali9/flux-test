@@ -30,7 +30,7 @@ spec:
     controller:
       podSecurityContext:
         fsGroup: 5000
-      containerSecurityContext:
+      SecurityContext:
         runAsNonRoot: true
         runAsUser: 5000
         runAsGroup: 5000
