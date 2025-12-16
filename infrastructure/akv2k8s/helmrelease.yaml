@@ -27,9 +27,11 @@ spec:
         enabled: true
     env_injector:
       enabled: false
-    controller:
-      podSecurityContext:
-        runAsNonRoot: true
-        fsGroup: 5000
-        runAsUser: 5000
-        runAsGroup: 5000
+  controller:
+    podSecurityContext:
+      fsGroup: 5000
+    securityContext:
+      runAsNonRoot: true
+      runAsUser: 5000
+      runAsGroup: 5000
+      allowPrivilegeEscalation: false
