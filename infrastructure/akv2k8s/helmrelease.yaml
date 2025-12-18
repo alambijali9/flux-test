@@ -26,9 +26,8 @@ spec:
     env_injector:
       enabled: false
     controller:
-      # serviceAccount:
-      #   annotations:
-      #     azure.workload.identity/client-id: "d0ae8340-a3b1-44e5-9cde-3a4148864ba1"
+      podLabels:
+        azure.workload.identity/use: "true"
       podSecurityContext:
         runAsNonRoot: true
         runAsUser: 5000
