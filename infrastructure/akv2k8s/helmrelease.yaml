@@ -18,15 +18,19 @@ spec:
     remediation:
       remediateLastFailure: true
   values:
-    addAzurePodIdentityException: false
-    useVMManagedIdentity: false
-    aadPodIdentity:
-      enabled: false
+    addAzurePodIdentityException: true
     global:
+      keyVaultAuth: environment
       metrics:
         enabled: true
     env_injector:
       enabled: false
     controller:
+      serviceAccount:
+        annotations:
+          azure.workload.identity/client-id: "d0ae8340-a3b1-44e5-9cde-3a4148864ba1"
       podSecurityContext:
+        runAsNonRoot: true
+        runAsUser: 5000
+        runAsGroup: 5000
         fsGroup: 5000
