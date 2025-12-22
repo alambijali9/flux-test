@@ -18,6 +18,7 @@ spec:
     remediation:
       remediateLastFailure: true
   values:
+    addAzurePodIdentityException: true
     global:
       keyVaultAuth: environment
       metrics:
