@@ -18,7 +18,7 @@ spec:
     remediation:
       remediateLastFailure: true
   values:
-    addAzurePodIdentityException: true
+    addAzurePodIdentityException: false
     global:
       keyVaultAuth: environment
       metrics:
@@ -26,8 +26,8 @@ spec:
     env_injector:
       enabled: false
     controller:
-      podLabels:
-        azure.workload.identity/use: "true"
+      # podLabels:
+      #   azure.workload.identity/use: "true"
       podSecurityContext:
         runAsNonRoot: true
         runAsUser: 5000
