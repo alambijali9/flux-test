@@ -3,7 +3,7 @@ kind: ServiceAccount
 metadata:
   name: akv2k8s-reconciler
   annotations:
-    azure.workload.identity/client-id: 9ce0f8c6-af88-4efd-9fdb-ef5aedd2ba8c
+    azure.workload.identity/client-id: 46f01ce1-e71a-4f8a-8b21-311039780872
 
 ---
 apiVersion: rbac.authorization.k8s.io/v1
