@@ -26,6 +26,8 @@ spec:
     env_injector:
       enabled: false
     controller:
+      podLabels:
+        azure.workload.identity/use: "true"
       podSecurityContext:
         runAsNonRoot: true
         runAsUser: 5000
