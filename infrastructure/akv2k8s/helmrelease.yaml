@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: akv2k8s
-      version: "2.8.1" # hold of on 2.5+ until this is fixed: https://github.com/SparebankenVest/azure-key-vault-to-kubernetes/issues/591
+      version: "2.3.5" # hold of on 2.5+ until this is fixed: https://github.com/SparebankenVest/azure-key-vault-to-kubernetes/issues/591
       sourceRef:
         kind: HelmRepository
         name: sparebankenvest-helm-charts
