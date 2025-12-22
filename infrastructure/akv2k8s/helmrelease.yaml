@@ -20,7 +20,7 @@ spec:
   values:
     addAzurePodIdentityException: false
     global:
-      keyVaultAuth: environment
+      # keyVaultAuth: environment
       metrics:
         enabled: true
     env_injector:
