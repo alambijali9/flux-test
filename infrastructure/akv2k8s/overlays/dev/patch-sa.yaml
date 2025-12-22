@@ -1,7 +1,7 @@
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: akv2k8s-reconciler
-  namespace: akv2k8s
-  annotations:
-    azure.workload.identity/client-id: 46f01ce1-e71a-4f8a-8b21-311039780872
+# apiVersion: v1
+# kind: ServiceAccount
+# metadata:
+#   name: akv2k8s-reconciler
+#   namespace: akv2k8s
+#   annotations:
+#     azure.workload.identity/client-id: 46f01ce1-e71a-4f8a-8b21-311039780872
