@@ -4,4 +4,4 @@ metadata:
   name: akv2k8s-reconciler
   namespace: akv2k8s
   annotations:
-    azure.workload.identity/client-id: 76e58ded-bfb0-407f-8c2e-5e14b352c2c0
+    azure.workload.identity/client-id: 48205505-a9b9-430c-b5fa-b70eac5151c6
