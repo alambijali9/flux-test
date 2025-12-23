@@ -5,8 +5,8 @@ metadata:
   namespace: flux-system
 spec:
   serviceAccountName: kustomize-controller
-  dependsOn:
-    - name: akv2k8s
+  # dependsOn:
+  #   - name: akv2k8s
   interval: 30s
   sourceRef:
     kind: GitRepository
