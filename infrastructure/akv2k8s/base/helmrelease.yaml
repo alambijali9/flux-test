@@ -26,6 +26,9 @@ spec:
     env_injector:
       enabled: false
     controller:
+      serviceAccount:
+        create: false
+        name: akv2k8s-reconciler
       podLabels:
         azure.workload.identity/use: "true"
       podSecurityContext:
