@@ -54,23 +54,23 @@ spec:
     - name: akv2k8s-crds    
 
 ---
-apiVersion: kustomize.toolkit.fluxcd.io/v1
-kind: Kustomization
-metadata:
-  name: akv2k8s
-  namespace: flux-system
-spec:
-  serviceAccountName: kustomize-controller
-  interval: 30s
-  sourceRef:
-    kind: GitRepository
-    name: flux-system
-  path: ./infrastructure/akv2k8s/overlays/prod
-  prune: true
-  wait: true
-  timeout: 5m
-  dependsOn:
-    - name: akv2k8s-crds  
+# apiVersion: kustomize.toolkit.fluxcd.io/v1
+# kind: Kustomization
+# metadata:
+#   name: akv2k8s
+#   namespace: flux-system
+# spec:
+#   serviceAccountName: kustomize-controller
+#   interval: 30s
+#   sourceRef:
+#     kind: GitRepository
+#     name: flux-system
+#   path: ./infrastructure/akv2k8s/overlays/prod
+#   prune: true
+#   wait: true
+#   timeout: 5m
+#   dependsOn:
+#     - name: akv2k8s-crds  
 
 
 #Hiding below config for workload identiy confi check test
