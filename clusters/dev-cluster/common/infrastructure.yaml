@@ -5,8 +5,8 @@ metadata:
   namespace: flux-system
 spec:
   serviceAccountName: kustomize-controller
-  # dependsOn:
-  #   - name: akv2k8s
+  dependsOn:
+    - name: akv2k8s
   interval: 30s
   sourceRef:
     kind: GitRepository
@@ -37,23 +37,23 @@ spec:
 ---
 
 #Hiding below config for workload identiy confi check test
-apiVersion: kustomize.toolkit.fluxcd.io/v1
-kind: Kustomization
-metadata:
-  name: akv2k8s
-  namespace: flux-system
-spec:
-  serviceAccountName: kustomize-controller
-  interval: 30s
-  sourceRef:
-    kind: GitRepository
-    name: flux-system
-  path: ./infrastructure/akv2k8s
-  prune: true
-  wait: true
-  timeout: 5m
-  dependsOn:
-    - name: akv2k8s-crds
+# apiVersion: kustomize.toolkit.fluxcd.io/v1
+# kind: Kustomization
+# metadata:
+#   name: akv2k8s
+#   namespace: flux-system
+# spec:
+#   serviceAccountName: kustomize-controller
+#   interval: 30s
+#   sourceRef:
+#     kind: GitRepository
+#     name: flux-system
+#   path: ./infrastructure/akv2k8s
+#   prune: true
+#   wait: true
+#   timeout: 5m
+#   dependsOn:
+#     - name: akv2k8s-crds
 
 
 # ---
@@ -145,40 +145,40 @@ spec:
 #   timeout: 5m
 
 
-# ---
-# apiVersion: kustomize.toolkit.fluxcd.io/v1
-# kind: Kustomization
-# metadata:
-#   name: akv2k8s
-#   namespace: flux-system
-# spec:
-#   serviceAccountName: kustomize-controller
-#   interval: 30s
-#   sourceRef:
-#     kind: GitRepository
-#     name: flux-system
-#   path: ./infrastructure/akv2k8s/overlays/dev
-#   prune: true
-#   wait: true
-#   timeout: 5m
-#   dependsOn:
-#     - name: akv2k8s-crds    
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: akv2k8s
+  namespace: flux-system
+spec:
+  serviceAccountName: kustomize-controller
+  interval: 30s
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  path: ./infrastructure/akv2k8s/overlays/dev
+  prune: true
+  wait: true
+  timeout: 5m
+  dependsOn:
+    - name: akv2k8s-crds    
 
-# ---
-# apiVersion: kustomize.toolkit.fluxcd.io/v1
-# kind: Kustomization
-# metadata:
-#   name: akv2k8s
-#   namespace: flux-system
-# spec:
-#   serviceAccountName: kustomize-controller
-#   interval: 30s
-#   sourceRef:
-#     kind: GitRepository
-#     name: flux-system
-#   path: ./infrastructure/akv2k8s/overlays/prod
-#   prune: true
-#   wait: true
-#   timeout: 5m
-#   dependsOn:
-#     - name: akv2k8s-crds  
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: akv2k8s
+  namespace: flux-system
+spec:
+  serviceAccountName: kustomize-controller
+  interval: 30s
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  path: ./infrastructure/akv2k8s/overlays/prod
+  prune: true
+  wait: true
+  timeout: 5m
+  dependsOn:
+    - name: akv2k8s-crds  
