@@ -5,3 +5,5 @@ metadata:
   namespace: akv2k8s
   annotations:
     azure.workload.identity/client-id: 60954ef9-08fe-4cd8-ace8-f3a30fb97d07
+
+    #test
