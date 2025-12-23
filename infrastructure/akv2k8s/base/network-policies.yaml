@@ -1,0 +1,18 @@
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: default-deny-all
+spec:
+  podSelector: {}
+  ingress: []
+---
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: allow-traffic-to-akv2k8s
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: akv2k8s
+  ingress:
+  - {}

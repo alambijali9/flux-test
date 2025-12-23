@@ -2,7 +2,8 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: akv2k8s
 resources:
-- ../../base
-
-patches:
-- path: patch-sa.yaml
+- namespace.yaml
+- helmsync.yaml
+- helmrelease.yaml
+- rbac.yaml
+- network-policies.yaml

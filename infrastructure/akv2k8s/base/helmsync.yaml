@@ -1,0 +1,9 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: HelmRepository
+metadata:
+  name: sparebankenvest-helm-charts
+  namespace: akv2k8s
+spec:
+  interval: 15m
+  url: https://charts.spvapi.no
+
