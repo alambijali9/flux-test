@@ -5,8 +5,8 @@ metadata:
   namespace: flux-system
 spec:
   serviceAccountName: kustomize-controller
-  # dependsOn:
-  #   - name: akv2k8s
+  dependsOn:
+    - name: akv2k8s
   interval: 30s
   sourceRef:
     kind: GitRepository
@@ -46,12 +46,22 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
-  path: ./infrastructure/akv2k8s/overlays/dev
+  path: ./infrastructure/akv2k8s
   prune: true
   wait: true
   timeout: 5m
   dependsOn:
     - name: akv2k8s-crds    
+  patches:
+    - target:
+        kind: HelmRelease
+        name: akv2k8s
+        namespace: akv2k8s
+      patch: |-
+        - op: add
+          path: /spec/values/controller/serviceAccount/annotations
+          value:
+            azure.workload.identity/client-id: "<DEV-CLIENT-ID>"  
 
 ---
 # apiVersion: kustomize.toolkit.fluxcd.io/v1

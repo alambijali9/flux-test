@@ -27,8 +27,7 @@ spec:
       enabled: false
     controller:
       serviceAccount:
-        create: false
-        name: akv2k8s-reconciler
+        create: true
       podLabels:
         azure.workload.identity/use: "true"
       podSecurityContext:
