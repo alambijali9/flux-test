@@ -61,7 +61,7 @@ spec:
         - op: add
           path: /spec/values/controller/serviceAccount/annotations
           value:
-            azure.workload.identity/client-id: "<DEV-CLIENT-ID>"  
+            azure.workload.identity/client-id: 0028c531-7294-441e-a8be-c2913fa45d9b
 
 ---
 # apiVersion: kustomize.toolkit.fluxcd.io/v1
