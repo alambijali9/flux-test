@@ -40,6 +40,6 @@ spec:
       fsGroup: 5000
     securityContext:
       runAsNonRoot: true
-      runAsUser: 65532
-      runAsGroup: 65532
+      runAsUser: 5000
+      runAsGroup: 5000
        
