@@ -15,13 +15,12 @@ spec:
   prune: true
   wait: true
   timeout: 5m
-
 ---
 
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: akv2k8s-crds
+  name: external-dns
   namespace: flux-system
 spec:
   serviceAccountName: kustomize-controller
@@ -29,39 +28,56 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
-  path: ./infrastructure/akv2k8s/crds
-  prune: false
-  wait: true
-  timeout: 5m
-
----
-apiVersion: kustomize.toolkit.fluxcd.io/v1
-kind: Kustomization
-metadata:
-  name: akv2k8s
-  namespace: flux-system
-spec:
-  serviceAccountName: kustomize-controller
-  interval: 30s
-  sourceRef:
-    kind: GitRepository
-    name: flux-system
-  path: ./infrastructure/akv2k8s
+  path: ./infrastructure/external-dns
   prune: true
   wait: true
   timeout: 5m
-  dependsOn:
-    - name: akv2k8s-crds    
-  patches:
-    - target:
-        kind: HelmRelease
-        name: akv2k8s
-        namespace: akv2k8s
-      patch: |-
-        - op: add
-          path: /spec/values/controller/serviceAccount/annotations
-          value:
-            azure.workload.identity/client-id: 0028c531-7294-441e-a8be-c2913fa45d9b
+---
+
+# apiVersion: kustomize.toolkit.fluxcd.io/v1
+# kind: Kustomization
+# metadata:
+#   name: akv2k8s-crds
+#   namespace: flux-system
+# spec:
+#   serviceAccountName: kustomize-controller
+#   interval: 30s
+#   sourceRef:
+#     kind: GitRepository
+#     name: flux-system
+#   path: ./infrastructure/akv2k8s/crds
+#   prune: false
+#   wait: true
+#   timeout: 5m
+
+---
+# apiVersion: kustomize.toolkit.fluxcd.io/v1
+# kind: Kustomization
+# metadata:
+#   name: akv2k8s
+#   namespace: flux-system
+# spec:
+#   serviceAccountName: kustomize-controller
+#   interval: 30s
+#   sourceRef:
+#     kind: GitRepository
+#     name: flux-system
+#   path: ./infrastructure/akv2k8s
+#   prune: true
+#   wait: true
+#   timeout: 5m
+#   dependsOn:
+#     - name: akv2k8s-crds    
+#   patches:
+#     - target:
+#         kind: HelmRelease
+#         name: akv2k8s
+#         namespace: akv2k8s
+#       patch: |-
+#         - op: add
+#           path: /spec/values/controller/serviceAccount/annotations
+#           value:
+#             azure.workload.identity/client-id: 0028c531-7294-441e-a8be-c2913fa45d9b
 
 ---
 # apiVersion: kustomize.toolkit.fluxcd.io/v1
