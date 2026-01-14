@@ -16,13 +16,14 @@ spec:
   chart:
     spec:
       chart: external-dns
-      version: "^1.7.1"
+      version: "1.19.0"
       sourceRef:
         kind: HelmRepository
         name: external-dns
         namespace: external-dns
   values:
-    provider: cloudflare
+    provider:
+      name: cloudflare
     extraArgs:
       - --cloudflare-proxied
     sources:
@@ -34,12 +35,10 @@ spec:
             name: cloudflare-token
             key: token
     podSecurityContext:
-      runAsNonRoot: true
       runAsUser: 5000
       runAsGroup: 5000
       fsGroup: 5000
     securityContext:
-      runAsNonRoot: true
       runAsUser: 5000
       runAsGroup: 5000
        
