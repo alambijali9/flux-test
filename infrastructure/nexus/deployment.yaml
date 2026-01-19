@@ -46,10 +46,13 @@ spec:
           #     path: /service/rest/v1/status
           #     port: 8081
           #   periodSeconds: 30
-      #     volumeMounts:
-      #       - name: nexus-data
-      #         mountPath: /nexus-data
+          volumeMounts:
+            - name: nexus-data
+              mountPath: /nexus-data
       # volumes:
       #   - name: nexus-data
       #     persistentVolumeClaim:
       #       claimName: azurefile-nfs-claim
+      volumes:
+      - name: nexus-data
+        emptyDir: {} 
