@@ -12,6 +12,11 @@ spec:
       labels:
         app: nexus-server
     spec:
+      securityContext:
+        runAsNonRoot: true
+        fsGroup: 5000
+        runAsUser: 5000
+        runAsGroup: 5000
       containers:
         - name: nexus
           image: sonatype/nexus3:3.70.4
