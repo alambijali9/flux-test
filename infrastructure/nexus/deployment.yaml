@@ -29,23 +29,23 @@ spec:
           #     cpu: "500m"
           ports:
             - containerPort: 8081
-          startupProbe:
-            httpGet:
-              path: /service/rest/v1/status
-              port: 8081
-            periodSeconds: 10
-            failureThreshold: 30
-          livenessProbe:
-            httpGet:
-              path: /service/rest/v1/status
-              port: 8081
-            periodSeconds: 30
-            failureThreshold: 5
-          readinessProbe:
-            httpGet:
-              path: /service/rest/v1/status
-              port: 8081
-            periodSeconds: 30
+          # startupProbe:
+          #   httpGet:
+          #     path: /service/rest/v1/status
+          #     port: 8081
+          #   periodSeconds: 10
+          #   failureThreshold: 30
+          # livenessProbe:
+          #   httpGet:
+          #     path: /service/rest/v1/status
+          #     port: 8081
+          #   periodSeconds: 30
+          #   failureThreshold: 5
+          # readinessProbe:
+          #   httpGet:
+          #     path: /service/rest/v1/status
+          #     port: 8081
+          #   periodSeconds: 30
       #     volumeMounts:
       #       - name: nexus-data
       #         mountPath: /nexus-data
