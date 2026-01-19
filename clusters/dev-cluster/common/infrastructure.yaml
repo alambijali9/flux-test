@@ -17,10 +17,27 @@ spec:
   timeout: 5m
 ---
 
+# apiVersion: kustomize.toolkit.fluxcd.io/v1
+# kind: Kustomization
+# metadata:
+#   name: external-dns
+#   namespace: flux-system
+# spec:
+#   serviceAccountName: kustomize-controller
+#   interval: 30s
+#   sourceRef:
+#     kind: GitRepository
+#     name: flux-system
+#   path: ./infrastructure/external-dns
+#   prune: true
+#   wait: true
+#   timeout: 5m
+---
+
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: external-dns
+  name: nexus
   namespace: flux-system
 spec:
   serviceAccountName: kustomize-controller
@@ -28,11 +45,10 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
-  path: ./infrastructure/external-dns
+  path: ./infrastructure/nexus
   prune: true
   wait: true
   timeout: 5m
----
 
 # apiVersion: kustomize.toolkit.fluxcd.io/v1
 # kind: Kustomization

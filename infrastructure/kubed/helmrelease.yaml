@@ -1,0 +1,28 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: kubed
+spec:
+  interval: 1h
+  timeout: 30m
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    remediation:
+      remediateLastFailure: true
+      retries: 3
+  serviceAccountName: gotk-reconciler
+  chart:
+    spec:
+      chart: kubed
+      version: "^0.13.2"
+      sourceRef:
+        kind: HelmRepository
+        name: appscode
+        namespace: kubed
+  values:
+    operator:
+      registry: rancher
+      repository: mirrored-appscode-kubed
+      tag: v0.13.2

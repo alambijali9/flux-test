@@ -1,0 +1,20 @@
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   # annotations:
+#   #   external-dns.alpha.kubernetes.io/target: 38eca727-de92-4911-81f4-5caf16e4c564.cfargotunnel.com
+#   #   nginx.ingress.kubernetes.io/proxy-body-size: 50m
+#   name: nexus
+# spec:
+#   ingressClassName: nginx
+#   rules:
+#   - host: artifacts.empoweranalytics.io
+#     http:
+#       paths:
+#       - backend:
+#           service:
+#             name: nexus
+#             port:
+#               number: 8081
+#         path: /
+#         pathType: ImplementationSpecific
