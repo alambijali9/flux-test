@@ -32,12 +32,28 @@
 #   prune: true
 #   wait: true
 #   timeout: 5m
----
+# ---
 
+# apiVersion: kustomize.toolkit.fluxcd.io/v1
+# kind: Kustomization
+# metadata:
+#   name: nexus
+#   namespace: flux-system
+# spec:
+#   serviceAccountName: kustomize-controller
+#   interval: 30s
+#   sourceRef:
+#     kind: GitRepository
+#     name: flux-system
+#   path: ./infrastructure/nexus
+#   prune: true
+#   wait: true
+#   timeout: 5m
+---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: nexus
+  name: kubed
   namespace: flux-system
 spec:
   serviceAccountName: kustomize-controller
@@ -45,10 +61,11 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
-  path: ./infrastructure/nexus
+  path: ./infrastructure/kubed
   prune: true
   wait: true
-  timeout: 5m
+  timeout: 5m  
+
 
 # apiVersion: kustomize.toolkit.fluxcd.io/v1
 # kind: Kustomization
