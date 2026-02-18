@@ -16,7 +16,7 @@ spec:
   chart:
     spec:
       chart: sonarqube
-      version: ${sonarqube_version}
+      version: "2025.5.0"
       sourceRef:
         kind: HelmRepository
         name: sonarqube
