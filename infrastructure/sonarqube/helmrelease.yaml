@@ -1,0 +1,79 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: sonarqube
+spec:
+  interval: 1h
+  timeout: 30m
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    remediation:
+      remediateLastFailure: true
+      retries: 3
+  serviceAccountName: gotk-reconciler
+  chart:
+    spec:
+      chart: sonarqube
+      version: ${sonarqube_version}
+      sourceRef:
+        kind: HelmRepository
+        name: sonarqube
+        namespace: sonarqube
+  values:
+    community:
+      enabled: true
+    securityContext:
+      runAsNonRoot: true
+      runAsUser: 5000
+      runAsGroup: 5000
+      fsGroup: 5000
+    containerSecurityContext:
+      runAsUser: 5000
+      runAsGroup: 5000
+
+
+    # ingress:
+    #   enabled: true
+    #   # Used to create an Ingress record.
+    #   hosts:
+    #     - name: sonarqube.empoweranalytics.io
+    #       # Different clouds or configurations might need /* as the default path
+    #       path: /
+    #       # For additional control over serviceName and servicePort
+    #       # serviceName: someService
+    #       # servicePort: somePort
+    #       # the pathType can be one of the following values: Exact|Prefix|ImplementationSpecific(default)
+    #       pathType: ImplementationSpecific
+    #   annotations: 
+    #     external-dns.alpha.kubernetes.io/target: "38eca727-de92-4911-81f4-5caf16e4c564.cfargotunnel.com"
+    #     nginx.ingress.kubernetes.io/proxy-body-size: "50m"
+    #   ingressClassName: nginx
+    # plugins:
+    #   install:
+    #     - https://github.com/mc1arke/sonarqube-community-branch-plugin/releases/download/${sonarqube_branch_plugin_version}/sonarqube-community-branch-plugin-${sonarqube_branch_plugin_version}.jar
+    # sonarProperties:
+    #   sonar.web.javaAdditionalOpts: "-javaagent:/opt/sonarqube/extensions/plugins/sonarqube-community-branch-plugin-${sonarqube_branch_plugin_version}.jar=web"
+    #   sonar.ce.javaAdditionalOpts: "-javaagent:/opt/sonarqube/extensions/plugins/sonarqube-community-branch-plugin-${sonarqube_branch_plugin_version}.jar=ce"
+    # extraVolumes:
+    #   - name: webapp
+    #     emptyDir:
+    #       sizeLimit: 50Mi
+    # extraVolumeMounts:
+    #   - name: webapp
+    #     mountPath: /opt/sonarqube/web
+    # extraInitContainers:
+    #   - name: download-webapp
+    #     image: busybox:1.37
+    #     volumeMounts:
+    #       - name: webapp
+    #         mountPath: /web
+    #     command:
+    #       - sh
+    #       - -c
+    #       - wget -O /tmp/sonarqube-webapp.zip https://github.com/mc1arke/sonarqube-community-branch-plugin/releases/download/${sonarqube_branch_plugin_version}/sonarqube-webapp.zip &&
+    #         unzip -o /tmp/sonarqube-webapp.zip -d /web &&
+    #         chmod -R 755 /web &&
+    #         chown -R 1000:0 /web &&
+    #         rm -f /tmp/sonarqube-webapp.zip
