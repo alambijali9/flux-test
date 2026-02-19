@@ -1,0 +1,61 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: kyverno
+  namespace: kyverno
+spec:
+  interval: 1h
+  timeout: 30m
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    remediation:
+      remediateLastFailure: true
+      retries: 3
+  serviceAccountName: kyverno-reconciler
+  chart:
+    spec:
+      chart: kyverno
+      version: "~3.5.1"
+      sourceRef:
+        kind: HelmRepository
+        name: kyverno
+        namespace: kyverno
+  values:
+    reportsController:
+      rbac:
+        clusterRole:
+          extraResources:
+            - apiGroups: [""]
+              resources: ["secrets"]
+              verbs: ["watch"]
+      podSecurityContext:
+        runAsNonRoot: true
+        runAsUser: 5000
+        runAsGroup: 5000
+        fsGroup: 5000
+    backgroundController:
+      rbac:
+        clusterRole:
+          extraResources:
+            - apiGroups: [""]
+              resources: ["secrets"]
+              verbs: ["create", "update", "delete"]
+      podSecurityContext:
+        runAsNonRoot: true
+        runAsUser: 5000
+        runAsGroup: 5000
+        fsGroup: 5000        
+    admissionController:
+      podSecurityContext:
+        runAsNonRoot: true
+        runAsUser: 5000
+        runAsGroup: 5000
+        fsGroup: 5000
+    cleanupController:
+      podSecurityContext:
+        runAsNonRoot: true
+        runAsUser: 5000
+        runAsGroup: 5000
+        fsGroup: 5000
