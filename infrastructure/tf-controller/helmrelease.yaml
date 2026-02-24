@@ -27,6 +27,13 @@ spec:
     - name: ghcr-image-pull-secret
     image:
       tag: "v0.15.1"
+    podSecurityContext:
+      runAsNonRoot: true
+      runAsUser: 5000
+      runAsGroup: 5000
+      fsGroup: 5000
+    securityContext:
+      runAsUser: 5000
     runner:
       image:
         repository: ghcr.io/alambijali9/tf-runner-azure

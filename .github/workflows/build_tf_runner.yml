@@ -21,6 +21,11 @@ on:
       terraform_cli_version:
         description: 'Terraform cli version'
         default: '1.14.0'
+
+permissions:
+  contents: read
+  packages: write
+          
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
    execute-image:
