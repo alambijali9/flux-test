@@ -1,0 +1,48 @@
+# This is a basic workflow that is manually triggered
+
+name: Build TF Runner
+
+# Controls when the action will run. Workflow runs when manually triggered using the UI
+# or API.
+on:
+  workflow_dispatch:
+    # Inputs the workflow accepts.
+    inputs:
+      docker_tag:
+        # Friendly description to be shown in the UI instead of 'name'
+        description: 'Docker version tag'
+        # Default value if no value is explicitly provided
+        default: '0.15.1'
+        # Input has to be provided for the workflow to run
+        required: true
+      tf_runner_version:
+        description: 'TF Runner Version'
+        default: 'v0.15.1'
+      terraform_cli_version:
+        description: 'Terraform cli version'
+        default: '1.14.0'
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+   execute-image:
+    name: Update Base Docker Image
+    runs-on: ubuntu-latest
+    env:
+      REGISTRY: ghcr.io
+      IMAGE_NAME: tf-runner-azure
+      ORG_NAME: alambijali9
+    steps:
+      - uses: actions/checkout@master
+        with:
+          fetch-depth: 1
+      - name: Build container for approval tests
+        run: ls -lsa  
+      - uses: mr-smithers-excellent/docker-build-push@v5
+        name: Build & push Docker image
+        with:
+          image: ${{ env.IMAGE_NAME }}
+          tags: ${{ github.event.inputs.docker_tag }}, latest
+          registry: ${{ env.REGISTRY }}
+          buildargs: "TF_RUNNER_VERSION=${{ github.event.inputs.tf_runner_version }},TF_VERSION=${{ github.event.inputs.terraform_cli_version }}"
+          dockerfile: infrastructure/tf-controller/Dockerfile.tfrunner
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}

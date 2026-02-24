@@ -1,0 +1,29 @@
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: default-deny-all
+spec:
+  podSelector: {}
+  ingress: []
+---
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: allow-traffic-to-tf-runner
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: tf-runner
+  ingress:
+  - {}
+---
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: allow-traffic-to-tf-controller
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: tf-controller
+  ingress:
+  - {}
